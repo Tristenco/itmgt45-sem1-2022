@@ -145,15 +145,17 @@ def vigenere_cipher(message, key):
     '''
     # Replace `pass` with your code. 
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-  def vigenere_cipher(message, key):
-    vigenere_key = key * (len(message) // len(key))
-    vigenere_key = vigenere_key + key[:len(message) % len(key)]
-    encrypted_message = ''
-    for i in range(len(message)):
-        if message[i] == ' ':
-            encrypted_message += ' '
+    vigenere = len(key)
+    shiftedmessage = ""
+    
+    for i in range (len(message)):
+        if message[i] == " ": 
+            shiftedmessage += " "
+            
+        elif message.isupper() and key.isupper():
+            shiftedmessage += chr( ( ( ord(message[i]) + ord(key[i % vigenere])) % 26  ) + 65 )
+            
         else:
-            shift_amount = ord(vigenere_key[i]) - ord('A')
-            new_ascii = (ord(message[i]) - ord('A') + shift_amount) % 26
-            encrypted_message += chr(new_ascii + ord('A'))
-    return encrypted_message
+             shiftedmessage == "Input Error Please Try Again"
+            
+    return 
